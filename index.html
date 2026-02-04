@@ -2,63 +2,84 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Valentine Quiz for Seppa ❤️</title>
+  <title>Valentine for Seppa ❤️</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #ff758c, #ff7eb3);
-      min-height: 100vh;
+      background: linear-gradient(135deg, #ff6f91, #ff9671);
+      height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
       color: #fff;
+      overflow: hidden;
     }
 
     .card {
       background: rgba(255, 255, 255, 0.15);
       padding: 30px;
       border-radius: 20px;
-      max-width: 420px;
       width: 90%;
+      max-width: 420px;
       text-align: center;
       backdrop-filter: blur(10px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
     }
 
     h1 {
       margin-bottom: 10px;
-      font-size: 2rem;
-    }
-
-    .heart {
-      font-size: 3rem;
-      animation: beat 1s infinite;
-    }
-
-    @keyframes beat {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.2); }
     }
 
     .question {
-      margin: 20px 0 8px;
-      font-weight: bold;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
+      margin: 20px 0 10px;
     }
 
-    .answer {
-      font-size: 1.05rem;
-      line-height: 1.5;
-      opacity: 0.95;
-    }
-
-    .footer {
-      margin-top: 25px;
-      font-style: italic;
+    .options button {
+      background: #fff;
+      color: #ff4d6d;
+      border: none;
+      padding: 10px 18px;
+      margin: 8px;
+      border-radius: 20px;
       font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .options button:hover {
+      transform: scale(1.05);
+    }
+
+    .final {
+      margin-top: 25px;
+      position: relative;
+      height: 120px;
+    }
+
+    .yes {
+      background: #00e676;
+      color: #000;
+    }
+
+    .no {
+      background: #ff1744;
+      color: #fff;
+      position: absolute;
+    }
+
+    .message {
+      display: none;
+      font-size: 1.3rem;
+      margin-top: 20px;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
   </style>
 </head>
@@ -66,31 +87,49 @@
 <body>
 
   <div class="card">
-    <div class="heart">❤️</div>
-    <h1>Valentine Quiz</h1>
-    <p>For my one and only <strong>Seppa</strong> 💕</p>
+    <h1>Hi Seppa ❤️</h1>
+    <p>Answer honestly 😌</p>
 
-    <div class="question">💌 Question 1:</div>
-    <div class="answer">Who is my favorite person in the world?</div>
-    <div class="answer"><strong>You. Always you 😘</strong></div>
+    <div class="question">Who is your favorite person?</div>
+    <div class="options">
+      <button>My wife 😍</button>
+      <button>Definitely my wife 💖</button>
+    </div>
 
-    <div class="question">💖 Question 2:</div>
-    <div class="answer">Who makes my bad days better without even trying?</div>
-    <div class="answer"><strong>You do, Seppa 🤍</strong></div>
+    <div class="question">Who do you want to spend forever with?</div>
+    <div class="options">
+      <button>You ❤️</button>
+      <button>Only you 🥰</button>
+    </div>
 
-    <div class="question">💍 Question 3:</div>
-    <div class="answer">Who is my best friend, my safe place, and my forever?</div>
-    <div class="answer"><strong>You. Today. Tomorrow. Always ❤️</strong></div>
+    <div class="question">Last question 😏</div>
+    <div class="final">
+      <p><strong>Will you be my Valentine?</strong></p>
 
-    <div class="question">🌹 Final Question:</div>
-    <div class="answer">Will you be my Valentine — not just today, but for life?</div>
-    <div class="answer"><strong>Because I already chose you 💞</strong></div>
+      <button class="yes" onclick="sayYes()">YES 💘</button>
+      <button class="no" id="noBtn">NO 😜</button>
+    </div>
 
-    <div class="footer">
-      With endless love,<br>
-      <strong>Your Wife 💖</strong>
+    <div class="message" id="loveMsg">
+      Yayyy 😍💖  
+      You’re officially my Valentine forever ❤️  
+      I love you, Seppa 🥹
     </div>
   </div>
+
+  <script>
+    const noBtn = document.getElementById("noBtn");
+
+    noBtn.addEventListener("mouseover", () => {
+      const x = Math.random() * 200 - 100;
+      const y = Math.random() * 200 - 100;
+      noBtn.style.transform = `translate(${x}px, ${y}px)`;
+    });
+
+    function sayYes() {
+      document.getElementById("loveMsg").style.display = "block";
+    }
+  </script>
 
 </body>
 </html>
