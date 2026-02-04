@@ -78,11 +78,17 @@
       font-size: 1.25rem;
     }
 
+    /* SMALLER NO BUTTON */
     .no {
+      width: auto;
+      padding: 8px 16px;
+      font-size: 0.9rem;
+      border-radius: 18px;
       background: #ff1744;
       color: #fff;
       position: absolute;
-      padding: 14px 28px;
+      cursor: not-allowed;
+      user-select: none;
     }
 
     .message {
@@ -148,7 +154,6 @@
 
 <body>
 
-  <!-- LOVE BACKGROUND -->
   <div class="love-layer" id="loveLayer"></div>
 
   <div class="card">
@@ -207,10 +212,17 @@
         noBtn.className = "no";
         noBtn.textContent = "NO 😜";
         noBtn.style.left = "55%";
-        noBtn.style.top = "70%";
+        noBtn.style.top = "72%";
 
+        // NO BUTTON RUNS AWAY (CANNOT BE CLICKED)
         noBtn.addEventListener("mouseenter", () => {
-          noBtn.style.transform = `translate(${Math.random() * 180 - 90}px, ${Math.random() * 120 - 60}px)`;
+          noBtn.style.transform =
+            `translate(${Math.random() * 180 - 90}px, ${Math.random() * 120 - 60}px)`;
+        });
+
+        noBtn.addEventListener("click", (e) => {
+          e.preventDefault();
+          e.stopPropagation();
         });
 
         optionsEl.appendChild(yesBtn);
